@@ -11,7 +11,7 @@ with open('inputs.txt', 'r') as file:   # Open file of puzzle inputs
     inputs = file.read()   # Read text from file into variable
     
 inputs = inputs.split('\n')     # Split string on each new line char
-Coord = collections.namedtuple('Coord', 'x y')
+Coord = collections.namedtuple('Coord', 'x y')  # Create namedtuple type
 vector = Coord(x=3,y=1)     # Write angle as vector
 
 # Calculate number each element should be multiplied by
@@ -30,8 +30,8 @@ while True:     # Loop through entire list
         if l[y][x] == '#':  # Evaluate if tree encountered
             answer += 1
         # Move "pointer"
-        y += vector[1]
-        x += vector[0]
+        y += vector.y
+        x += vector.x
     except:
         break
     
