@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Dec  5 21:25:58 2020
+Created on Sun Dec  6 22:16:48 2020
 
 @author: joshstow
 """
@@ -41,8 +41,16 @@ for item in l:
     a = findSeat(item, total_rows, total_cols)
     ids.append((a[0]*8)+a[1])   # Calculate ID and append to list
     
-answer = max(ids)   # Find highest ID
-print(answer)   # 828
+ids.sort()  # Sort list in numerical order
+ids = ids[8:-8]     # Remove first and last rows from list
 
-            
-        
+# Find missing item in list
+i = ids[0]
+for item in ids:
+    if item != i:
+        answer = i
+        break
+    i += 1
+
+print(answer)   # 565
+    
