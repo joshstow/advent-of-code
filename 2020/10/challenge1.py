@@ -23,6 +23,7 @@ while True:
         continue
     if (rating+2) in adapters:
         rating += 2
+        print(True)
         continue
     if (rating+3) in adapters:
         rating += 3
