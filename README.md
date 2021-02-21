@@ -1,4 +1,2 @@
 # Advent Of Code
-Scripts to solve the daily Advent of Code challenges using Python
-
-[Advent of Code Website](https://adventofcode.com/)
+Scripts to solve the daily [Advent of Code](https://adventofcode.com/) challenges using Python
