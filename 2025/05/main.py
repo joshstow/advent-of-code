@@ -20,6 +20,26 @@ def part1():
 
     return total_fresh
 
+def part2():
+    sorted_ranges = sorted(ranges)
+
+    total = 0
+    current_lower, current_upper = sorted_ranges[0]
+
+    for lower, upper in sorted_ranges[1:]:
+        if lower > current_upper + 1:
+            total += current_upper - current_lower + 1
+            current_lower, current_upper = lower, upper
+        else:
+            current_upper = max(current_upper, upper)
+
+    total += current_upper - current_lower + 1
+
+    return total
+
 if __name__ == "__main__":
     answer1 = part1()
     print(f"Answer 1: {answer1}")
+
+    answer2 = part2()
+    print(f"Answer 2: {answer2}")
