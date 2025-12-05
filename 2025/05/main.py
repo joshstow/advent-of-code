@@ -10,15 +10,15 @@ with open("puzzle_input.txt", 'r') as f:
     ids = [int(id) for id in ids.split('\n')]
 
 def part1():
-    total_fresh = 0
+    total = 0
 
     for id in ids:
-        for range in ranges:
-            if range[0] <= id <= range[1]:
-                total_fresh += 1
+        for lower, upper in ranges:
+            if lower <= id <= upper:
+                total += 1
                 break
 
-    return total_fresh
+    return total
 
 def part2():
     sorted_ranges = sorted(ranges)
