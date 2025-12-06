@@ -22,6 +22,22 @@ with open("puzzle_input.txt", 'r') as f:
     # Remember to include last column
     col_ranges.append((start_col, len(lines[0]) - 1))
 
+def build_numbers_from_columns(start, end):
+    parsed_numbers = []
+
+    for i in range(end, start-1, -1):
+        new_num = ""
+
+        for j in range(len(lines)-1):
+            char = lines[j][i]
+
+            if char != ' ':
+                new_num += char
+
+        parsed_numbers.append(new_num)
+    
+    return parsed_numbers
+
 def part1():
     total = 0
 
@@ -38,6 +54,27 @@ def part1():
 
     return total
 
+def part2():
+    total = 0
+
+    for start, end in col_ranges:
+        # Get operator
+        operator = lines[4][start:end+1].strip()
+
+        numbers = build_numbers_from_columns(start, end)
+
+        equation = numbers[0]
+
+        for i in range(1, len(numbers)):
+            equation += operator + numbers[i]
+
+        total += eval(equation)
+
+    return total
+
 if __name__ == "__main__":
     answer1 = part1()
     print(f"Answer 1: {answer1}")
+
+    answer2 = part2()
+    print(f"Answer 2: {answer2}")
