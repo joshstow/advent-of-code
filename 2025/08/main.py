@@ -71,6 +71,32 @@ def part1():
     # Find product of three largest components
     return sizes[0] * sizes[1] * sizes[2]
 
+def part2():
+    n = len(coords)
+    distance_edges = [] # (distance_sq, idx_a, idx_b)
+
+    # Build all edges with squared distances
+    for i in range(n-1):
+        for j in range(i+1, n):
+            distance_edges.append((calculate_3d_distance_sq(coords[i], coords[j]), i, j))
+
+    # Sort edges by distance
+    distance_edges.sort(key=lambda x: x[0])
+
+    uf = UnionFind(n)
+    # Union edges until all connected
+    for _, a, b in distance_edges:
+        # if uf.find(a) != uf.find(b):
+            uf.union(a,b)
+
+            # Check if all connected
+            if len(uf.component_sizes()) == 1:
+                # All connected
+                return coords[a][0] * coords[b][0]
+
 if __name__ == "__main__":
     answer1 = part1()
     print(f"Answer 1: {answer1}")
+
+    answer2 = part2()
+    print(f"Answer 2: {answer2}")
