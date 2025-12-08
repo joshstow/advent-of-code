@@ -86,13 +86,12 @@ def part2():
     uf = UnionFind(n)
     # Union edges until all connected
     for _, a, b in distance_edges:
-        # if uf.find(a) != uf.find(b):
-            uf.union(a,b)
+        uf.union(a,b)
 
-            # Check if all connected
-            if len(uf.component_sizes()) == 1:
-                # All connected
-                return coords[a][0] * coords[b][0]
+        # Check if all connected
+        if len(uf.component_sizes()) == 1:
+            # All connected
+            return coords[a][0] * coords[b][0]
 
 if __name__ == "__main__":
     answer1 = part1()
