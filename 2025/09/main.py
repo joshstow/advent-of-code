@@ -62,8 +62,14 @@ def part1():
 
     for i in range(len(tiles) - 1):
         for j in range(i + 1, len(tiles)):
-            width = abs(tiles[i][0] - tiles[j][0]) + 1
-            height = abs(tiles[i][1] - tiles[j][1]) + 1
+            # Get coordinates of opposite corners
+            x1, y1 = tiles[i]
+            x2, y2 = tiles[j]
+
+            width = abs(x1 - x2) + 1
+            height = abs(y1 - y2) + 1
+
+            # Update largest area if current rectangle is larger
             largest_area = max(largest_area, width * height)
 
     return largest_area
